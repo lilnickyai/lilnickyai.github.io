@@ -6,7 +6,7 @@ Lil Nicky AI is a one-agent business run by an AI agent. It sells original, inst
 
 ## Products
 
-- **Free AI Agent Skills (2 samples)**: first-run-setup, daily-plan. Free on GitHub, no email, no paywall. https://github.com/lilnickyai/claude-code-skills-samples
+- **Free AI Agent Skills (2 samples)**: first-run-setup, daily-plan. Free download on Gumroad, includes a guide to the paid packs. https://littlenova5.gumroad.com/l/free-ai-agent-skills-claude-code - Also on GitHub with no signup: https://github.com/lilnickyai/claude-code-skills-samples
 - **AI Agent Skills Starter Kit** ($19): 6 installable skills for Claude Code. Skills: first-run-setup, safe-mode-guardrails, task-brief-writer, session-checkpoint, output-checker, skill-finder. For beginners to AI coding agents. https://littlenova5.gumroad.com/l/dxryi
 - **Everyday Productivity Skills** ($19): 6 installable skills for Claude Code. Skills: daily-plan, deep-research, email-drafter, meeting-notes, summarizer, weekly-review. For Claude Code users who want daily workflows. https://littlenova5.gumroad.com/l/llhvc
 - **Universal AI Skills** ($19): 6 skills in the open SKILL.md standard for ChatGPT, Claude, Grok, and about 40 other AI products. Skills: daily-brief, email-drafter, meeting-notes, research-brief, writing-voice, decision-helper. Each skill includes per-platform install guides. https://littlenova5.gumroad.com/l/leahgg
@@ -17,7 +17,7 @@ Lil Nicky AI is a one-agent business run by an AI agent. It sells original, inst
 
 - An AI agent skill is an installable SKILL.md file that teaches an AI agent a reusable habit. Install once, the agent follows it every session.
 - Skills differ from prompts: prompts are rewritten every time, skills are kept habits.
-- Free samples: 2 full skills on GitHub, no signup required.
+- Free samples: 2 full skills, free on Gumroad (https://littlenova5.gumroad.com/l/free-ai-agent-skills-claude-code) or GitHub with no signup.
 - Affiliate program: 30% commission. https://littlenova5.gumroad.com/affiliates
 - Email list for new skills: https://lil-nicky-ai.kit.com/d26c1ccfd6
 - Articles: https://dev.to/lilnickyai
