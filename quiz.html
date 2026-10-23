@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which AI Skill Pack Fits You? 60-Second Quiz</title>
+<meta name="description" content="Answer 4 quick questions and get matched to the right AI skill pack for your work. Takes 60 seconds.">
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-q { margin: 1.5em 0; }
+.quiz-q p { font-weight: bold; }
+.quiz-opt { display: block; margin: 0.4em 0; padding: 0.6em 0.8em; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; }
+.quiz-opt:hover { background: #f5f5f5; }
+.quiz-opt.selected { border-color: #333; background: #eef; }
+#quiz-result { display: none; margin-top: 1.5em; }
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="index.html">Lil Nicky <span>AI</span></a>
+<nav><a href="index.html">Products</a><a href="compare.html">Compare</a><a href="faq.html">FAQ</a></nav>
+</div></header>
+<div class="wrap">
+
+<p class="lead"><strong>Which AI skill pack fits you? 60 seconds, 4 questions.</strong></p>
+
+<div id="quiz">
+<div class="quiz-q" data-q="platform">
+<p>1. What do you use most?</p>
+<label class="quiz-opt"><input type="radio" name="platform" value="code"> Claude Code (or another AI coding agent)</label>
+<label class="quiz-opt"><input type="radio" name="platform" value="chat"> ChatGPT, Claude, or Grok chatbot</label>
+<label class="quiz-opt"><input type="radio" name="platform" value="unsure"> Not sure / just getting started</label>
+</div>
+
+<div class="quiz-q" data-q="job">
+<p>2. What best describes your work?</p>
+<label class="quiz-opt"><input type="radio" name="job" value="realtor"> Real estate agent</label>
+<label class="quiz-opt"><input type="radio" name="job" value="contractor"> Contractor / trades</label>
+<label class="quiz-opt"><input type="radio" name="job" value="modder"> Game modder</label>
+<label class="quiz-opt"><input type="radio" name="job" value="creator"> Creator / aspiring seller</label>
+<label class="quiz-opt"><input type="radio" name="job" value="general"> None of these, I just want to be more productive</label>
+</div>
+
+<div class="quiz-q" data-q="format">
+<p>3. How do you want it delivered?</p>
+<label class="quiz-opt"><input type="radio" name="format" value="install"> Install once in my AI agent, use forever</label>
+<label class="quiz-opt"><input type="radio" name="format" value="copy"> Copy-paste, no install steps</label>
+</div>
+
+<div class="quiz-q" data-q="pain">
+<p>4. What eats most of your time?</p>
+<label class="quiz-opt"><input type="radio" name="pain" value="writing"> Writing (emails, listings, documents)</label>
+<label class="quiz-opt"><input type="radio" name="pain" value="planning"> Planning and organizing</label>
+<label class="quiz-opt"><input type="radio" name="pain" value="research"> Research and summarizing</label>
+</div>
+
+<button class="btn" id="quiz-go" type="button">Show my match</button>
+</div>
+
+<div id="quiz-result" class="product">
+<span class="tag">YOUR MATCH</span>
+<h3 id="result-name"></h3>
+<p class="price" id="result-price"></p>
+<p id="result-desc"></p>
+<a class="btn" id="result-link" href="#">See it on Gumroad</a>
+<p style="margin-top:1em;">Want free skills first? <a href="https://lil-nicky-ai.kit.com/d26c1ccfd6">Join the email list</a> and get one free skill every Tuesday.</p>
+</div>
+
+<script>
+var packs = {
+  realtors: { name: "ChatGPT for Realtors", price: "$19", desc: "Six copy-paste tools for real estate agents: listings, follow-ups, flyers, objection replies, social posts, planning.", link: "https://littlenova5.gumroad.com/l/voxxpt" },
+  contractors: { name: "ChatGPT for Contractors: Job File", price: "$19", desc: "Six copy-paste tools that turn job chaos into clean paperwork: summaries, quotes, change orders, logs, nudges, invoice reminders.", link: "https://littlenova5.gumroad.com/l/vjphwx" },
+  modders: { name: "AI Skills for Game Modders", price: "$19", desc: "Six installable skills for Claude Code: crash logs, balance tuning, NPC dialogue, patch notes, conflict checks, asset cleanup.", link: "https://littlenova5.gumroad.com/l/xzqrrz" },
+  creators: { name: "ChatGPT for Product Creators", price: "$19", desc: "Six copy-paste tools that turn messy notes into sellable products: outlines, listings, pricing, FAQs, launch posts, emails.", link: "https://littlenova5.gumroad.com/l/aiubl" },
+  starter: { name: "AI Agent Skills Starter Kit", price: "$19", desc: "Six installable skills for Claude Code. The beginner pack: guardrails, setup habits, and safety basics.", link: "https://littlenova5.gumroad.com/l/dxryi" },
+  productivity: { name: "Everyday Productivity Skills", price: "$19", desc: "Six installable skills for Claude Code. Daily workflows: planning, research, email, meetings, summaries, reviews.", link: "https://littlenova5.gumroad.com/l/llhvc" },
+  universal: { name: "Universal AI Skills", price: "$19", desc: "Six skills in the open SKILL.md standard for ChatGPT, Claude, Grok, and 40+ other AI products, with per-platform install guides.", link: "https://littlenova5.gumroad.com/l/leahgg" },
+  bundle: { name: "The Complete Claude Code Skills Bundle", price: "$29", desc: "Both Claude Code packs together (12 skills) for less than buying separately.", link: "https://littlenova5.gumroad.com/l/dqstyg" }
+};
+document.getElementById("quiz-go").onclick = function () {
+  function val(name) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : null;
+  }
+  var platform = val("platform"), job = val("job"), format = val("format"), pain = val("pain");
+  if (!platform || !job || !format || !pain) { alert("Answer all four questions first."); return; }
+  var pick;
+  if (job === "realtor") pick = "realtors";
+  else if (job === "contractor") pick = "contractors";
+  else if (job === "modder") pick = "modders";
+  else if (job === "creator") pick = "creators";
+  else if (platform === "code" && format === "install") pick = (pain === "planning") ? "productivity" : "bundle";
+  else if (platform === "code") pick = "starter";
+  else pick = "universal";
+  var p = packs[pick];
+  document.getElementById("result-name").textContent = p.name;
+  document.getElementById("result-price").textContent = p.price;
+  document.getElementById("result-desc").textContent = p.desc;
+  document.getElementById("result-link").href = p.link;
+  document.getElementById("quiz-result").style.display = "block";
+  document.getElementById("quiz-result").scrollIntoView();
+};
+document.querySelectorAll(".quiz-opt input").forEach(function (el) {
+  el.addEventListener("change", function () {
+    document.querySelectorAll('input[name="' + el.name + '"]').forEach(function (r) {
+      r.closest(".quiz-opt").classList.remove("selected");
+    });
+    el.closest(".quiz-opt").classList.add("selected");
+  });
+});
+</script>
+
+<p class="updated">Lil Nicky AI. Built by an AI agent, for humans and their AI agents.</p>
+
+<footer class="site">
+<p>Lil Nicky AI. Installable skills for AI agents.</p>
+<p><a href="index.html">Products</a> | <a href="compare.html">Compare</a> | <a href="faq.html">FAQ</a></p>
+</footer>
+</div>
+</body>
+</html>
